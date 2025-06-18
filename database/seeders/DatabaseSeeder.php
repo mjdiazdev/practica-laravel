@@ -1,22 +1,27 @@
 <?php
 
-namespace Database\Seeders;
-
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use Database\Seeders\TiposCuentaContableSeeder;
+use Database\Seeders\ClasificacionesContablesSeeder;
+use Database\Seeders\CuentasContablesSeeder;
+use Database\Seeders\ProveedoresSeeder;
+use Database\Seeders\ClientesSeeder;
+use Database\Seeders\ProductosSeeder;
+use Database\Seeders\ComprasSeeder;
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
-    public function run(): void
+    public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call([
+            TiposCuentaContableSeeder::class,
+            ClasificacionesContablesSeeder::class,
+            CuentasContablesSeeder::class,
+            ProveedoresSeeder::class,
+            ClientesSeeder::class,
+            ProductosSeeder::class,
+            ComprasSeeder::class,
+        ]);
     }
+
+
 }

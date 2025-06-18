@@ -20,5 +20,10 @@ Route::get('/user/{id}', [UserController::class, 'show']);
 Route::put('/user/{id}', [UserController::class, 'update']);
 Route::delete('/user/{id}', [UserController::class, 'destroy']);
 
-Route::apiResource('clientes', ClienteController::class);
+Route::get('/cliente', [ClienteController::class, 'index']);
+Route::post('/cliente', [ClienteController::class, 'store']);
+Route::get('/cliente/{id}', [ClienteController::class, 'show']);
+Route::put('/cliente/{id}', [ClienteController::class, 'update']);
+Route::delete('/cliente/{id}', [ClienteController::class, 'destroy']);
+
 
