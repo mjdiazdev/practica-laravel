@@ -29,6 +29,6 @@ Route::get('/clientes/edit/{id}', [ClienteController::class, 'edit'])->name('cli
 Route::put('/clientes/edit/{id}', [ClienteController::class, 'update'])->name('clientes.update');
 Route::delete('/clientes/edit/{id}', [ClienteController::class, 'destroy'])->name('clientes.destroy');
 
-Route::get('/reporte/cliente', [ClienteController::class, 'clientePDF']);
+Route::get('/reporte/cliente', [ClienteController::class, 'clientePDF'])->name('clientes.reporte');
 
 Route::get('/reporte/libro-diario', [ReporteContableController::class, 'libroDiarioPDF']);

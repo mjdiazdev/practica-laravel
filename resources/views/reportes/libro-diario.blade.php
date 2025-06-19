@@ -28,7 +28,8 @@
             @php $contador = 1; @endphp
             @foreach($agrupados as $grupo)
                 <tr>
-                    <td colspan="5" style="font-weight: bold; text-align: center;">-{{ $contador }}-</td>
+                    <td>Fecha</td>
+                    <td colspan="4" style="font-weight: bold; text-align: center;">-{{ $contador }}-</td>
                 </tr>
                 @foreach($grupo as $mov)
                     <tr>
