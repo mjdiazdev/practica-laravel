@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http; // Para consumir APIs
 use App\Models\Cliente;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class ClienteController extends Controller
 {
+    public function clientePDF()
+    {
+        $clientes = Cliente::all();
+        $pdf = Pdf::loadView('reportes.cliente', compact('clientes'));
+        return $pdf->download('cliente.pdf');
+    }
+
     public function index()
     {
         $clientes = Cliente::all();

@@ -12,6 +12,8 @@
 </head>
 <body>
     <h2>Libro Diario</h2>
+    <p>Fecha: {{ \Carbon\Carbon::parse($fecha)->format('d/m/Y') }}</p>
+
     <table>
         <thead>
             <tr>
@@ -23,24 +25,38 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($movimientos as $mov)
+            @php $contador = 1; @endphp
+            @foreach($agrupados as $grupo)
                 <tr>
-                    <td>{{ $mov->created_at->format('Y-m-d') }}</td>
-                    <td>{{ $mov->cuentaContable->codigo }} - {{ $mov->cuentaContable->nombre }}</td>
-                    <td>{{ $mov->descripcion }}</td>
-                    <td>
-                        @if($mov->tipo === 'debe')
-                            {{ number_format($mov->monto, 2) }}
-                        @endif
-                    </td>
-                    <td>
-                        @if($mov->tipo === 'haber')
-                            {{ number_format($mov->monto, 2) }}
-                        @endif
-                    </td>
+                    <td colspan="5" style="font-weight: bold; text-align: center;">-{{ $contador }}-</td>
                 </tr>
+                @foreach($grupo as $mov)
+                    <tr>
+                        <td>{{ $mov->created_at->format('Y-m-d') }}</td>
+                        <td>{{ $mov->cuentaContable->codigo }} - {{ $mov->cuentaContable->nombre }}</td>
+                        <td>{{ $mov->descripcion }}</td>
+                        <td>
+                            @if($mov->tipo === 'debe')
+                                {{ number_format($mov->monto, 2) }}
+                            @endif
+                        </td>
+                        <td>
+                            @if($mov->tipo === 'haber')
+                                {{ number_format($mov->monto, 2) }}
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+                @php $contador++; @endphp
             @endforeach
         </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="3">Totales</th>
+                <th>{{ number_format($totalDebe, 2) }}</th>
+                <th>{{ number_format($totalHaber, 2) }}</th>
+            </tr>
+        </tfoot>
     </table>
 </body>
 </html>
